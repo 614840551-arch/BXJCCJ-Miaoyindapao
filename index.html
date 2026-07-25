@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>背景音乐</title>
+    <title>背景音乐自动播放</title>
 </head>
 <body>
+    <!-- autoplay 自动加载播放，muted 绕过浏览器拦截实现打开即播放 -->
     <audio autoplay muted loop playsinline id="bgMusic">
-        <!-- 你的MP3 CDN加速链接，加载更快 -->
-        <source src="https://cdn.jsdelivr.net/gh/614840551-arch/BXJCCJ-Miaoyindapao/JX3-狂.mp3" type="audio/mpeg">
+        <source src="JX3-KUANG.mp3" type="audio/mpeg">
     
 
-    <button style="padding:12px 24px;font-size:18px;margin-top:50px;" onclick="unlockAudio()">
+    <button style="padding:14px 28px;font-size:18px;" onclick="unlockAudio()">
         点击开启音乐声音
     </button>
 
     <script>
         const audio = document.getElementById('bgMusic');
+        // 点击按钮解除静音，正常出声
         function unlockAudio(){
             audio.muted = false;
         }
-        // 微信浏览器兼容自动播放
+        // 兼容微信浏览器自动播放
         document.addEventListener("WeixinJSBridgeReady", function () {
             audio.play();
         }, false);
