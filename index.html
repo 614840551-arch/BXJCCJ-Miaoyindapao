@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>背景音乐自动播放</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>背景音乐</title>
 </head>
 <body>
-    <!-- autoplay 自动加载播放，muted 绕过浏览器拦截实现打开即播放 -->
-    <audio autoplay muted loop playsinline id="bgMusic">
-        <source src="JX3-KUANG.mp3" type="audio/mpeg">
-    
+<audio autoplay muted loop playsinline id="bgMusic">
+    <source src="JX3-KUANG.mp3" type="audio/mpeg">
 
-    <button style="padding:14px 28px;font-size:18px;" onclick="unlockAudio()">
-        点击开启音乐声音
-    </button>
-
-    <script>
-        const audio = document.getElementById('bgMusic');
-        // 点击按钮解除静音，正常出声
-        function unlockAudio(){
-            audio.muted = false;
-        }
-        // 兼容微信浏览器自动播放
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-        }, false);
-    </script>
+<button onclick="audioUnmute()">点击开启音乐声音</button>
+<script>
+let audio = document.getElementById("bgMusic");
+function audioUnmute(){
+    audio.muted = false;
+}
+// 兼容微信浏览器自动加载
+document.addEventListener("WeixinJSBridgeReady",()=>{audio.play()})
+</script>
 </body>
 </html>
